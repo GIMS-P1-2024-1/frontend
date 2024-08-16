@@ -1,15 +1,15 @@
 import React from 'react';
-import './SingUpForm.css';
-import { ReactComponent as Art } from '../assets/Art.svg'; // Import the SVG as a React component
+import './Form.css'; 
+import { ReactComponent as Art } from '../assets/Art.svg';
 
-const SignUp = () => {
+const SignUpForm = () => {
     return (
-        <div className="signup-container">
-            <div className="signup-wrapper">
-                <div className="signup-decorative-side">
+        <div className="form-container">
+            <div className="form-wrapper">
+                <div className="decorative-side">
                     <Art />
                 </div>
-                <div className="signup-form">
+                <div className="form">
                     <h2>EasyComm</h2>
                     <h4>Sign Up</h4>
                     <form>
@@ -41,4 +41,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default SignUpForm;
