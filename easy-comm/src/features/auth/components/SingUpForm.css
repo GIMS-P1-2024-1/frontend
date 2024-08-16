@@ -1,0 +1,126 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #F4F0FF;
+}
+
+.signup-wrapper {
+    display: flex;
+    max-width: 750px;
+    height: 550px;
+    border-radius: 30px;
+    overflow: hidden;
+
+    /* Sombra ajustada para maior elevação */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15), 0px 6px 6px rgba(0, 0, 0, 0.1);
+
+    background-color: #ffffff;
+}
+
+.signup-decorative-side {
+    display: none;
+    background-color: #906EE8;
+}
+
+.signup-decorative-side svg {
+    width: 100%;
+    height: 100%;
+}
+
+.signup-form {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    background-color: white;
+    width: calc(100% - 250px);
+}
+
+.signup-form h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #292133;
+    line-height: 1.5;
+}
+
+.signup-form h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #45434A;
+    line-height: 1.4;
+}
+
+.signup-form h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #45434A;
+    line-height: 1.4;
+}
+
+.input-group {
+    margin-bottom: 16px;
+    width: 100%;
+    position: relative;
+}
+
+.input-group i.material-icons {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    color: #8474A1;
+    font-size: 24px;
+}
+
+
+.input-group input {
+    width: 100%;
+    padding: 8px 16px 8px 48px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #f4f4ff;
+}
+
+button {
+    width: 100%;
+    background-color: #906EE8;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    text-align: center;
+    align-content: flex-end;
+    align-items: flex-end;
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    height: 48px;
+}
+
+button:hover {
+    background-color: #8474A1;
+}
+
+@media screen and (min-width: 768px) {
+    .signup-decorative-side {
+        display: block;
+        width: 250px;
+        height: 100%;
+    }
+
+    .signup-wrapper {
+        width: 750px;
+        height: 550px;
+    }
+
+    .signup-form {
+        width: calc(100% - 250px);
+    }
+}
