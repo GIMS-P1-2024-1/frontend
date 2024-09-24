@@ -3,13 +3,13 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #F4F0FF;
+    background-color: #DDEAF9;
 }
 
 .form-wrapper {
     display: flex;
-    max-width: 750px;
-    height: 550px;
+    max-width: 850px;
+    height: 600px;
     border-radius: 30px;
     overflow: hidden;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15), 0px 6px 6px rgba(0, 0, 0, 0.1);
@@ -18,7 +18,7 @@
 
 .decorative-side {
     display: none;
-    background-color: #906EE8;
+    background-color: #1a4e8a;
 }
 
 .decorative-side svg {
@@ -63,7 +63,7 @@
     top: 50%;
     left: 16px;
     transform: translateY(-50%);
-    color: #8474A1;
+    color: #1a4e8a;
     font-size: 24px;
 }
 
@@ -79,22 +79,23 @@
 
 button {
     width: 100%;
-    background-color: #906EE8;
+    background-color: #3D87CB; /* Azul médio */
     color: white;
     border: none;
-    border-radius: 16px;
+    border-radius: 24px; /* Defina o valor como metade da altura ou mais */
     cursor: pointer;
     text-align: center;
     margin-top: 16px;
     font-size: 16px;
     font-weight: bold;
-    height: 48px;
+    height: 48px; /* Altura do botão */
 }
 
 button:hover {
-    background-color: #8474A1;
+    background-color: #0A2F67; /* Azul mais escuro */
 }
 
+/* Manter o layout normal para telas maiores que 768px */
 @media screen and (min-width: 768px) {
     .decorative-side {
         display: block;
@@ -103,11 +104,51 @@ button:hover {
     }
 
     .form-wrapper {
-        width: 750px;
-        height: 550px;
+        width: 850px;
+        height: 600px;
     }
 
     .form {
         width: calc(100% - 250px);
+    }
+}
+
+/* Para telas pequenas (abaixo de 768px) */
+@media screen and (max-width: 768px) {
+    .form-wrapper {
+        flex-direction: column;
+        width: 100%; /* Ocupa toda a largura da tela */
+        height: auto; /* Ajusta a altura automaticamente */
+        border-radius: 0; /* Remove o arredondamento */
+        padding: 16px; /* Adiciona padding */
+    }
+
+    .decorative-side {
+        display: none; /* Esconde o lado decorativo */
+    }
+
+    .form {
+        width: 100%; /* O formulário ocupa toda a largura */
+        padding: 16px; /* Ajusta o padding */
+        align-items: center; /* Centraliza os itens */
+    }
+
+    .form h2 {
+        font-size: 28px; /* Reduz o tamanho do título */
+        text-align: center; /* Centraliza o título */
+    }
+
+    .form h3, .form h4 {
+        font-size: 20px; /* Reduz o tamanho dos subtítulos */
+        text-align: center; /* Centraliza os subtítulos */
+    }
+
+    .input-group input {
+        padding: 10px 16px 10px 40px; /* Ajusta o padding dos inputs */
+    }
+
+    button {
+        height: 40px; /* Reduz a altura do botão */
+        font-size: 14px; /* Reduz o tamanho da fonte do botão */
     }
 }

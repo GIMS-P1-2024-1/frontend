@@ -1,17 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import SignInForm from './features/auth/components/SignInForm';
 import SignUpForm from './features/auth/components/SignUpForm';
+import Home from "./features/home/components/Home";
+
 
 function App() {
     return (
         <Router>
             <Routes>
-                {/* Rota para a página de login (inicial) */}
                 <Route path="/" element={<SignInForm />} />
-
-                {/* Rota para a página de inscrição */}
                 <Route path="/signup" element={<SignUpForm />} />
+
+                <Route path="/home/*" element={<Home />} />
             </Routes>
         </Router>
     );
