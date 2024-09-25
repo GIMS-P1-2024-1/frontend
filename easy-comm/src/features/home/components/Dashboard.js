@@ -1,6 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Dashboard.css';
-import {NavLink} from "react-bootstrap";
 
 const Dashboard = () => {
     return (
@@ -12,16 +12,16 @@ const Dashboard = () => {
                 <div className="nav-list">
                     <ul>
                         <li className="nav-item">
-                            <NavLink to="groups" className="nav-link" activeClassName="active">Groups</NavLink>
+                            <NavLink to={"groups"} className="nav-link" activeClassName="active">Groups</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="integrations" className="nav-link" activeClassName="active">Integrations</NavLink>
+                            <NavLink to={"integrations"} className="nav-link" activeClassName="active">Integrations</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="members" className="nav-link" activeClassName="active">Members</NavLink>
+                            <NavLink to={"members"} className="nav-link" activeClassName="active">Members</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="settings" className="nav-link" activeClassName="active">Settings</NavLink>
+                            <NavLink to={"settings"} className="nav-link" activeClassName="active">Settings</NavLink>
                         </li>
                     </ul>
                 </div>

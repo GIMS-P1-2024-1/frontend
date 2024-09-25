@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import './Home.css';
 
-// Componentes para diferentes seções
 const Groups = () => (
     <div className="content-section">
         <h2>Groups</h2>
@@ -39,8 +38,7 @@ const Settings = () => (
 const Home = () => {
     return (
         <div className="home-container">
-            <Dashboard /> {/* O Navbar fixo */}
-
+            <Dashboard /> {}
             <div className="home-content">
                 <Routes>
                     <Route path="groups" element={<Groups />} />
