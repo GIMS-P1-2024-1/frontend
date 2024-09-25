@@ -1,0 +1,33 @@
+.group-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.group-card {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+    margin-bottom: 8px;
+    padding: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.group-card:hover {
+    background-color: #dcdcdc;
+}
+
+.group-info {
+    flex-grow: 1;
+}
+
+.group-icons {
+    display: flex;
+    align-items: center;
+}
+
+.gmail-icon, .discord-icon {
+    margin-left: 10px;
+}

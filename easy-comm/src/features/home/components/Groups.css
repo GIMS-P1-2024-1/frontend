@@ -1,0 +1,80 @@
+.group-management {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.group-list {
+    flex: 1;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.group-list h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #292133;
+}
+
+.group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f4f4ff;
+    margin-bottom: 10px;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.group-item:hover {
+    background-color: #e6e8ff;
+}
+
+.group-info h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #292133;
+}
+
+.group-info p {
+    margin: 5px 0 0;
+    color: #45434a;
+    font-size: 14px;
+}
+
+.group-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.group-icons img {
+    width: 24px;
+    height: 24px;
+}
+
+.group-details {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.group-details h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.group-details ul {
+    padding-left: 20px;
+    list-style: none;
+}
