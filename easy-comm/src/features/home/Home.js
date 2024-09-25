@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import './Home.css';
-import Groups from "./components/Groups";
+import Groups from "./components/groups/Groups";
 import Integrations from "./components/Integrations";
 import Members from "./components/Members";
 import Settings from "./components/Settings";

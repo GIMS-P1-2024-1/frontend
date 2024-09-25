@@ -1,0 +1,99 @@
+.group-details {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.details-header h2 {
+    margin: 0;
+}
+
+.edit-button{
+    background-color: #0187a7;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.save-button{
+    background-color: #0187a7;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 80px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.edit-button i {
+    font-size: 24px;
+}
+
+.details-content label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.details-content p, .details-content input, .details-content textarea {
+    margin: 5px 0;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.integrations {
+    display: flex;
+    gap: 20px;
+}
+
+.integration-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.members-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.members-list li {
+    background-color: #e0efff;
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+
+.members-list input {
+    width: 100%;
+}
+

@@ -78,3 +78,30 @@
     padding-left: 20px;
     list-style: none;
 }
+
+.group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.add-group-button {
+    background-color: #0187a7;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.add-group-button:hover {
+    background-color: #0a6491;
+}
