@@ -1,11 +1,10 @@
 import React from 'react';
 
-const Integrations = () => {
-    return (
-        <div>
-            <h2>Integrations Management</h2>
-        </div>
-    );
-};
+const Integrations = () => (
+    <div className="content-section">
+        <h2>Integrations</h2>
+        <p>Aqui ficam as integrações do sistema.</p>
+    </div>
+);
 
 export default Integrations;

@@ -74,10 +74,44 @@ header {
 }
 
 .material-icons {
-    font-size: 36px; /* Tamanho do ícone */
-    color: #fff; /* Cor do ícone */
+    font-size: 36px;
+    color: #fff;
 }
 
+
+.nav-link.active {
+    color: #3D87CB;
+    font-weight: bold;
+    border-bottom: 2px solid #3D87CB;
+
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #131313;
+    font-weight: 500;
+    margin: 0 20px;
+}
+
+.nav-link:hover {
+    color: #0187a7;
+}
+
+.nav-item {
+    margin: 0 20px;
+    position: relative;
+}
+
+.nav-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -10px;
+    height: 100%;
+    width: 1px;
+    background-color: #e0e0e0;
+}
 
 @media screen and (max-width: 730px) {
     .nav-bar {
