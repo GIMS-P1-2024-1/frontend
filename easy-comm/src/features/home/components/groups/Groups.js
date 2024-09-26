@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import GroupList from './GroupsList';
 import GroupDetails from './GroupDetails';
 import './Groups.css';
+import { fetchWithAuth } from '../../../auth/components/authService'
 
 
 const Groups = () => {
@@ -11,7 +12,7 @@ const Groups = () => {
     useEffect(() => {
         const fetchGroups = async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_API_URL}/groups`);
+                const response = await fetchWithAuth(`${process.env.REACT_APP_API_URL}/groups`);
                 if (!response.ok) {
                     throw new Error('API reponse was not OK.');
                 }

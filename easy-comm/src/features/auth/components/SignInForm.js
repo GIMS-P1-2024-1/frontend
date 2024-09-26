@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-import './Form.css'; 
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './Form.css';
 import { ReactComponent as Art } from '../assets/Art.svg';
-import {login} from "./authService";
+import { login } from "./authService";
 
 const SignInForm = () => {
     const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ const SignInForm = () => {
             const response = await login(email, password);
             if (response.success) {
                 localStorage.setItem('authToken', response.token);
-                 navigate('/home');
+                navigate('/home');
             } else {
                 setError(response.message || 'Erro desconhecido.');
             }
