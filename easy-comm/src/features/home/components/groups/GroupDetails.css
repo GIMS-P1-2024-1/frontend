@@ -13,6 +13,7 @@
 }
 
 .details-header h2 {
+    font-weight: bold;
     margin: 0;
 }
 
@@ -65,9 +66,29 @@
     border-radius: 4px;
 }
 
+.details-content input,
+.details-content textarea,
+.details-content p,
+.integrations .integration-item,
+.members-list li {
+    font-size: 14px;
+}
+
+.details-content input,
+.details-content textarea {
+    padding: 6px;
+}
+
+.members-list li {
+    font-size: 13px;
+    padding: 4px 8px;
+}
+
+
 .integrations {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .integration-item {
@@ -75,6 +96,7 @@
     align-items: center;
     gap: 10px;
 }
+
 
 .members-list {
     display: flex;
