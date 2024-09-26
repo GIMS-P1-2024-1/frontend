@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import './Home.css';
 import Groups from "./components/groups/Groups";
-import Integrations from "./components/Integrations";
+import Integrations from "./components/Integration/Integration";
 import Members from "./components/Members";
 import Settings from "./components/Settings";
 

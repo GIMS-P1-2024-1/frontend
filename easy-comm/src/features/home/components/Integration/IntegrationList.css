@@ -1,0 +1,50 @@
+.integration-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.integration-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.integration-info {
+    flex: 1;
+}
+
+.integration-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.integration-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.integration-icon {
+    margin-left: 20px;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.status.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.status.inactive {
+    background-color: #F44336;
+    color: white;
+}
