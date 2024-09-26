@@ -46,7 +46,6 @@ const Groups = () => {
     };
 
     const handleSaveGroup = (updatedGroup) => {
-        // Atualiza o grupo localmente
         setGroups(prevGroups =>
             prevGroups.map(group =>
                 group.title === updatedGroup.title ? updatedGroup : group
