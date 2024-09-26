@@ -19,7 +19,6 @@ const SignInForm = () => {
             if (response.success) {
                 localStorage.setItem('authToken', response.token);
                  navigate('/home');
-                alert('Login bem-sucedido!');
             } else {
                 setError(response.message || 'Erro desconhecido.');
             }
