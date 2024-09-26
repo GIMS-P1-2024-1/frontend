@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import './Form.css'; 
+import React, { useState } from 'react';
+import './Form.css';
 import { ReactComponent as Art } from '../assets/Art.svg';
-import {useNavigate} from "react-router-dom";
-import {validateEmail, validatePassword, validateUsername} from "./RegisterService";
+import { useNavigate } from "react-router-dom";
+import { validateEmail, validatePassword, validateUsername } from "./RegisterService";
 
 const SignUpForm = () => {
     const [email, setEmail] = useState('');
@@ -13,6 +13,14 @@ const SignUpForm = () => {
     const [error, setError] = useState('');
 
     const navigate = useNavigate();
+
+    const setAuthToken = (token) => {
+        if (token) {
+            localStorage.setItem('authToken', token);
+        } else {
+            localStorage.removeItem('authToken');
+        }
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,49 +36,47 @@ const SignUpForm = () => {
             return;
         }
 
-        if (!validatePassword(password)) {
-            setError('A senha deve ter pelo menos 8 caracteres, incluindo um número, uma letra maiúscula e uma letra minúscula');
-            return;
-        }
-
         if (password !== confirmPassword) {
             setError('As senhas não coincidem.');
             return;
         }
 
-        // Se todas as validações passarem, faz a requisição para o backend
-        /*
+        const userData = {
+            email,
+            username,
+            password
+        }
+
         try {
-            const response = await fetch('/api/signup', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    email,
-                    name,
-                    username,
-                    password
-                }),
+                body: JSON.stringify(userData),
             });
 
-            const data = await response.json();
-
-            if (data.success) {
-                alert('Cadastro realizado com sucesso!');
-                navigate('/'); // Redireciona para a tela de login após o cadastro
-            } else {
-                setError('Erro no cadastro. Tente novamente.');
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Erro ao cadastrar usuário.');
             }
-        } catch (error) {
-            console.error('Erro ao realizar cadastro:', error);
-            setError('Ocorreu um erro. Tente novamente mais tarde.');
-        }
-        */
 
-        // Por enquanto, redireciona para a tela de login após cadastro bem-sucedido
-        alert('Cadastro realizado com sucesso!');
-        navigate('/'); // Redireciona para a tela de login
+            const data = await response.json();
+            const token = data.access_token;
+            const tokenType = data.token_type;
+            const user = data.user;
+
+            setAuthToken(`${tokenType} ${token}`);
+
+            localStorage.setItem('user', JSON.stringify(user));
+
+            console.log('User registered successfuly:', user);
+
+            navigate('/home')
+        } catch (error) {
+            console.error('Error registering user:', error);
+            setError(error.message || 'Erro ao cadastrar o usuário');
+        }
     };
 
     return (
