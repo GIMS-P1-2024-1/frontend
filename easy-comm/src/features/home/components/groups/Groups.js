@@ -1,21 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import GroupList from './GroupsList';
 import GroupDetails from './GroupDetails';
 import './Groups.css';
 
-const initialGroups = [
-    { title: 'ativos', description: 'Alunos ativos do curso', emailIntegration: 'ativos@ccc.ufcg.edu.br', discordIntegration: 'ccc@ufcg - #ativos', members: ['zorak.stellar@ccc.ufcg.edu.br', 'tina.morph@ccc.ufcg.edu.br', 'alden.nyrek@ccc.ufcg.edu.br'] },
-    { title: 'perio24.1', description: 'Alunos ingressantes do período 24.1', emailIntegration: 'periodo24.1@ccc.ufcg.edu.br', discordIntegration: 'ccc@ufcg - #periodo24-1', members: ['phorak.motrin@ccc.ufcg.edu.br', 'velmar.zenith@ccc.ufcg.edu.br'] },
-    { title: 'periodo23.2', description: 'Alunos ingressantes do período 23.2', emailIntegration: 'periodo23.2@ccc.ufcg.edu.br', discordIntegration: 'ccc@ufcg - #periodo23-2', members: ['aldren.morph@ccc.ufcg.edu.br', 'tyler.zenith@ccc.ufcg.edu.br'] },
-    { title: 'grafos24.2-t1', description: 'Alunos matriculados em Grafos 24.2 (turma 1)', emailIntegration: 'grafos24.2-t1@ccc.ufcg.edu.br', discordIntegration: 'ccc@ufcg - #grafos24-2-t1', members: ['zorak.stellar@ccc.ufcg.edu.br', 'tina.morph@ccc.ufcg.edu.br'] },
-    { title: 'eda24.2-t1', description: 'Alunos matriculados em EDA 24.2 (turma 1)', emailIntegration: 'eda24.2-t1@ccc.ufcg.edu.br', discordIntegration: 'ccc@ufcg - #eda24-2-t1', members: ['alden.nyrek@ccc.ufcg.edu.br', 'kernok.tyll@ccc.ufcg.edu.br'] },
-    { title: 'eda24.2-t2', description: 'Alunos matriculados em EDA 24.2 (turma 2)', emailIntegration: 'eda24.2-t2@ccc.ufcg.edu.br', discordIntegration: 'ccc@ufcg - #eda24-2-t2', members: ['zorak.stellar@ccc.ufcg.edu.br', 'velmar.zenith@ccc.ufcg.edu.br'] },
-];
-
 
 const Groups = () => {
-    const [groups, setGroups] = useState(initialGroups);
-    const [selectedGroup, setSelectedGroup] = useState(groups[0]);
+    const [groups, setGroups] = useState([]);
+    const [selectedGroup, setSelectedGroup] = useState(null);
+
+    useEffect(() => {
+        const fetchGroups = async () => {
+            try {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/groups`);
+                if (!response.ok) {
+                    throw new Error('API reponse was not OK.');
+                }
+
+                const data = await response.json();
+                console.log('API Response:', data);
+
+                const transformedGroups = data.groups.map(group => ({
+                    title: group.name,
+                    description: group.description,    // TODO: add description field in backend
+                    emailIntegration: group.g_groups_integration || '',
+                    discordIntegration: group.discord_integration || '',
+                    members: group.members.map(member => member.email)
+                }));
+
+                setGroups(transformedGroups);
+
+                if (transformedGroups.length > 0) {
+                    setSelectedGroup(transformedGroups[0]);
+                }
+
+            } catch (error) {
+                console.error('Error fetching groups:', error);
+            }
+        };
+
+        fetchGroups();
+    }, []);
 
     const handleGroupClick = (group) => {
         setSelectedGroup(group);
@@ -29,26 +53,6 @@ const Groups = () => {
             )
         );
         setSelectedGroup(updatedGroup);
-
-        // Aqui é onde a API seria chamada para salvar os dados
-        /*
-        fetch(`https://sua-api.com/grupos/${updatedGroup.id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updatedGroup),
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Grupo atualizado com sucesso:', data);
-                // Atualiza o estado com os grupos atualizados da API (se necessário)
-                setGroups(data.grupos); // Exemplo: caso a API retorne todos os grupos atualizados
-            })
-            .catch(error => {
-                console.error('Erro ao atualizar o grupo:', error);
-            });
-        */
     };
 
     const handleAddGroup = () => {
@@ -64,20 +68,25 @@ const Groups = () => {
     };
 
     return (
-        <div className="group-page-container">
-            <h1 className="group-page-title">Group Management</h1> {/* Adiciona o título */}
-            <div className="group-management">
-                <GroupList
-                    groups={groups}
-                    selectedGroup={selectedGroup}
-                    handleGroupClick={handleGroupClick}
-                    handleAddGroup={handleAddGroup}
-                />
-                <GroupDetails
-                    selectedGroup={selectedGroup}
-                    onSaveGroup={handleSaveGroup}
-                />
-            </div>
+        <div className="group-management">
+            {/* Render GroupList and GroupDetails only if groups are loaded */}
+            {groups.length > 0 && (
+                <>
+                    <GroupList
+                        groups={groups}
+                        selectedGroup={selectedGroup}
+                        handleGroupClick={handleGroupClick}
+                        handleAddGroup={handleAddGroup}
+                    />
+                    {selectedGroup && (
+                        <GroupDetails
+                            selectedGroup={selectedGroup}
+                            onSaveGroup={handleSaveGroup}
+                        />
+                    )}
+                </>
+            )}
+            {groups.length === 0 && <p>Loading groups...</p>}
         </div>
     );
 };
