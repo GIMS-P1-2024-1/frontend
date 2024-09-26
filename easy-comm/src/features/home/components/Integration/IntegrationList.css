@@ -1,42 +1,62 @@
 .integration-list {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 100%;
+    width: 100%;  /* Adiciona largura total para o container da lista */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .integration-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #E8F1FA;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;  /* Assegura que o card individual também use toda a largura */
+}
+
+.integration-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;  /* Faz o conteúdo expandir */
 }
 
 .integration-info {
-    flex: 1;
+    flex: 1;  /* Faz com que o texto ocupe o espaço restante */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .integration-info h3 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    color: #333;
 }
 
 .integration-info p {
-    margin: 5px 0;
-    color: #666;
+    margin: 0;
+    color: #555;
+    font-size: 1rem;
 }
 
-.integration-icon {
-    margin-left: 20px;
+.status-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 .status {
     padding: 5px 10px;
     border-radius: 5px;
+    font-weight: bold;
 }
 
 .status.active {
@@ -47,4 +67,19 @@
 .status.inactive {
     background-color: #F44336;
     color: white;
+}
+
+.last-updated {
+    color: #777;
+}
+
+.integration-icon {
+    margin-left: auto;  /* Isso move o ícone para a direita */
+}
+
+.warning-icon {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

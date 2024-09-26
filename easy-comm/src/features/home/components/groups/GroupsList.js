@@ -3,12 +3,12 @@ import './Groups.css'; // Para manter o estilo dos componentes
 import Gmail from '../../assets/gmail_icon.svg';
 import Discord from '../../assets/discord_icon.svg'
 
-const GroupList = ({ groups, selectedGroup, handleGroupClick, handleAddClick }) => {
+const GroupList = ({ groups, selectedGroup, handleGroupClick, handleAddGroup }) => {  // Altere handleAddClick para handleAddGroup
     return (
         <div className="group-list">
             <div className="group-header">
                 <h2>Existing Groups</h2>
-                <button className="add-group-button" onClick={handleAddClick}>+</button>
+                <button className="add-group-button" onClick={handleAddGroup}>+</button> {/* Aqui, também chamamos handleAddGroup */}
             </div>
             <ul>
                 {groups.map((group, index) => (

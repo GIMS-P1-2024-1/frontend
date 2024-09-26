@@ -64,17 +64,20 @@ const Groups = () => {
     };
 
     return (
-        <div className="group-management">
-            <GroupList
-                groups={groups}
-                selectedGroup={selectedGroup}
-                handleGroupClick={handleGroupClick}
-                handleAddGroup={handleAddGroup}
-            />
-            <GroupDetails
-                selectedGroup={selectedGroup}
-                onSaveGroup={handleSaveGroup}
-            />
+        <div className="group-page-container">
+            <h1 className="group-page-title">Group Management</h1> {/* Adiciona o título */}
+            <div className="group-management">
+                <GroupList
+                    groups={groups}
+                    selectedGroup={selectedGroup}
+                    handleGroupClick={handleGroupClick}
+                    handleAddGroup={handleAddGroup}
+                />
+                <GroupDetails
+                    selectedGroup={selectedGroup}
+                    onSaveGroup={handleSaveGroup}
+                />
+            </div>
         </div>
     );
 };

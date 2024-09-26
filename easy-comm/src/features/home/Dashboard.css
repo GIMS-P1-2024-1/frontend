@@ -2,14 +2,20 @@ header {
     border-radius: 12px;
     background-color: #ffffff;
     box-shadow: 0 3px 10px #464646;
-    margin-bottom: 40px; /* Adiciona margem entre o menu e o conteúdo */
+    align-content: center;
+    align-items: center;
+    margin-bottom: 40px;
 }
 
 .nav-bar {
     display: flex;
     justify-content: space-between;
-    padding: 1.5rem 6rem;
+    padding: 1.5rem 2rem; /* Reduza o padding para minimizar espaços laterais */
+    width: 100%; /* Garante que ocupe 100% da largura disponível */
+    max-width: 1200px; /* Limita a largura máxima para uma melhor aparência em telas grandes */
+    margin: 0 auto; /* Centraliza a barra de navegação na página */
 }
+
 
 .logo {
     display: flex;
@@ -18,7 +24,10 @@ header {
 
 .logo h1 {
     color: #131313;
+    font-size: 2.5rem; /* Aumente conforme necessário */
+    font-weight: bold; /* Torne o título mais destacado */
 }
+
 
 .nav-list {
     display: flex;
@@ -35,12 +44,7 @@ header {
     margin: 0 15px;
 }
 
-.nav-link {
-    text-decoration: none;
-    font-size: 1.15rem;
-    color: #131313;
-    font-weight: 400;
-}
+
 
 .login-button button {
     border: none;
@@ -88,9 +92,9 @@ header {
 
 .nav-link {
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.75rem; /* Aumente para um tamanho maior */
     color: #131313;
-    font-weight: 500;
+    font-weight: 600; /* Torne os links mais espessos */
     margin: 0 20px;
 }
 
@@ -99,7 +103,10 @@ header {
 }
 
 .nav-item {
+    font-size: 1.3rem; /* Aumente para um tamanho maior */
     margin: 0 20px;
+    font-weight: bold; /* Torne o título mais destacado */
+
     position: relative;
 }
 

@@ -11,7 +11,7 @@ const Integrations = () => {
 
     return (
         <div className="integrations-container">
-            <h2>Integrations</h2>
+            <h1>Integrations</h1>
             <IntegrationList integrations={integrations} />
         </div>
     );
