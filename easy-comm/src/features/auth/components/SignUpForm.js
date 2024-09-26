@@ -66,7 +66,7 @@ const SignUpForm = () => {
             const tokenType = data.token_type;
             const user = data.user;
 
-            setAuthToken(`${tokenType} ${token}`);
+            setAuthToken(token);
 
             localStorage.setItem('user', JSON.stringify(user));
 
