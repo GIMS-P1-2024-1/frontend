@@ -68,10 +68,9 @@ const Groups = () => {
     };
 
     return (
-        <div className="group-management">
-            {/* Render GroupList and GroupDetails only if groups are loaded */}
-            {groups.length > 0 && (
-                <>
+        <div className="group-page-container">
+            {groups.length > 0 ? (
+                <div className="group-management">
                     <GroupList
                         groups={groups}
                         selectedGroup={selectedGroup}
@@ -84,9 +83,10 @@ const Groups = () => {
                             onSaveGroup={handleSaveGroup}
                         />
                     )}
-                </>
+                </div>
+            ) : (
+                <p>Loading groups...</p>
             )}
-            {groups.length === 0 && <p>Loading groups...</p>}
         </div>
     );
 };

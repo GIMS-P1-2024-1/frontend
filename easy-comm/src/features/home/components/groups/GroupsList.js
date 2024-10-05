@@ -10,7 +10,7 @@ const GroupList = ({ groups, selectedGroup, handleGroupClick, handleAddGroup }) 
                 <h2>Existing Groups</h2>
                 <button className="add-group-button" onClick={handleAddGroup}>+</button> {/* Aqui, também chamamos handleAddGroup */}
             </div>
-            <ul>
+            <ul className="group-list-items">
                 {groups.map((group, index) => (
                     <li
                         key={index}
