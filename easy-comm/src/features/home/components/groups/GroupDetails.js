@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GmailIcon from '../../assets/gmail_icon.svg';
 import DiscordIcon from '../../assets/discord_icon.svg';
-import './GroupDetails.css';
+import './Groups.css';
 
 const GroupDetails = ({ selectedGroup, onSaveGroup }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -75,12 +75,12 @@ const GroupDetails = ({ selectedGroup, onSaveGroup }) => {
 
     return (
         <div className="group-details">
-            <div className="details-header">
+            <div className="main-header">
                 <h2>Details</h2>
                 {isEditing ? (
-                    <button className="save-button" onClick={handleSaveClick}>Salvar</button>
+                    <button className="main-button save-button" onClick={handleSaveClick}>Salvar</button>
                 ) : (
-                    <button className="edit-button" onClick={handleEditClick}>
+                    <button className="main-button edit-button" onClick={handleEditClick}>
                         <i className="material-icons">edit</i>
                     </button>
                 )}

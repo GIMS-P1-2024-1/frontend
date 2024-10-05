@@ -55,6 +55,7 @@
 .group-info h3 {
     margin: 0;
     font-size: 18px;
+    font-weight: bold;
     color: #292133;
 }
 
@@ -95,27 +96,41 @@
     list-style: none;
 }
 
-.group-header {
+.main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 
-.add-group-button {
+.main-header h2 {
+    font-weight: bold;
+    margin: 0;
+}
+
+.main-button{
     background-color: #0187a7;
     border: none;
     color: white;
     font-size: 18px;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 6px 12px;
+    border-radius: 6px;
     cursor: pointer;
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 10px;
+}
+
+/* must be a main-button */
+.save-button{
+    width: 80px;
+}
+
+.edit-button i {
+    font-size: 24px;
 }
 
 .add-group-button:hover {
@@ -133,3 +148,77 @@
         max-width: none;
     }
 }
+
+.group-details {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.details-content label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.details-content p, .details-content input, .details-content textarea {
+    margin: 5px 0;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.details-content input,
+.details-content textarea,
+.details-content p,
+.integrations .integration-item,
+.members-list li {
+    font-size: 14px;
+}
+
+.details-content input,
+.details-content textarea {
+    padding: 6px;
+}
+
+.members-list li {
+    font-size: 13px;
+    padding: 4px 8px;
+}
+
+
+.integrations {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.integration-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.members-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.members-list li {
+    background-color: #e0efff;
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+
+.members-list input {
+    width: 100%;
+}
+
