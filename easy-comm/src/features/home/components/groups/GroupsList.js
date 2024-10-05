@@ -8,7 +8,9 @@ const GroupList = ({ groups, selectedGroup, handleGroupClick, handleAddGroup }) 
         <div className="group-list">
             <div className="main-header">
                 <h2>Existing Groups</h2>
-                <button className="main-button" onClick={handleAddGroup}>+</button> {/* Aqui, também chamamos handleAddGroup */}
+                <button className="main-button" onClick={handleAddGroup}>
+                    <i className="material-icons">add</i>
+                </button> {/* Aqui, também chamamos handleAddGroup */}
             </div>
             <ul className="group-list-items">
                 {groups.map((group, index) => (
