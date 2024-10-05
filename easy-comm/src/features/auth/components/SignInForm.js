@@ -5,7 +5,7 @@ import { ReactComponent as Art } from '../assets/Art.svg';
 import { login } from "./authService";
 
 const SignInForm = () => {
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ const SignInForm = () => {
         setError('');
 
         try {
-            const response = await login(email, password);
+            const response = await login(username, password);
             if (response.success) {
                 localStorage.setItem('authToken', response.token);
                 navigate('/home');
@@ -40,13 +40,13 @@ const SignInForm = () => {
                     {error && <p style={{ color: 'red' }}>{error}</p>}
                     <form onSubmit={handleSubmit}>
                         <div className="input-group">
-                            <i className="material-icons">email</i>
+                            <i className="material-icons">person</i>
                             <input
-                                type="email"
-                                placeholder="Email"
+                                type="username"
+                                placeholder="Username"
                                 required
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                             />
                         </div>
                         <div className="input-group">
