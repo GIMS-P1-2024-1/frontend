@@ -12,9 +12,9 @@
     display: flex;
     flex-direction: column;  /* Garante que o conteúdo seja disposto verticalmente */
     justify-content: flex-start;
-    gap: 20px;
-    width: 100%;  /* Garante que o conteúdo ocupe toda a largura disponível */
     background-color: #DDEAF9;
     padding: 20px;
     margin-top: 40px;
+    width: 80vw;
+    max-width: 1300px;
 }

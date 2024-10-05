@@ -68,25 +68,28 @@ const Groups = () => {
     };
 
     return (
-        <div className="group-page-container">
-            {groups.length > 0 ? (
-                <div className="group-management">
-                    <GroupList
-                        groups={groups}
-                        selectedGroup={selectedGroup}
-                        handleGroupClick={handleGroupClick}
-                        handleAddGroup={handleAddGroup}
-                    />
-                    {selectedGroup && (
-                        <GroupDetails
+        <div className="main-group-management">
+            <h1>Group management</h1>
+            <div className="group-management-box-container">
+                {groups.length > 0 ? (
+                    <div className="group-management">
+                        <GroupList
+                            groups={groups}
                             selectedGroup={selectedGroup}
-                            onSaveGroup={handleSaveGroup}
+                            handleGroupClick={handleGroupClick}
+                            handleAddGroup={handleAddGroup}
                         />
-                    )}
-                </div>
-            ) : (
-                <p>Loading groups...</p>
-            )}
+                        {selectedGroup && (
+                            <GroupDetails
+                                selectedGroup={selectedGroup}
+                                onSaveGroup={handleSaveGroup}
+                            />
+                        )}
+                    </div>
+                ) : (
+                    <p>Loading groups...</p>
+                )}
+            </div>
         </div>
     );
 };

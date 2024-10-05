@@ -1,6 +1,14 @@
-.group-page-container {
-    display: flex;
-    justify-content: center;
+.main-group-management {
+    max-width: 1200px;
+}
+
+.main-group-management h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.group-management-box-container {
     align-items: center;
     background-color: #DDEAF9;
 }
@@ -9,9 +17,6 @@
     display: flex;
     justify-content: center;
     gap: 20px;
-    width: 100%;
-    max-width: 1200px;
-    align-items: flex-start;
 }
 
 .group-list {
