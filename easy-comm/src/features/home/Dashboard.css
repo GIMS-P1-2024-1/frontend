@@ -19,6 +19,7 @@ header {
 .logo {
     display: flex;
     align-items: center;
+    font-family: 'Merriweather Sans'
 }
 
 .logo h1 {
@@ -26,6 +27,10 @@ header {
     font-size: 2.5rem;
     font-weight: bold;
     margin-right: 70px ;
+}
+
+.logo-i {
+    color: #1A4E8A;
 }
 
 
