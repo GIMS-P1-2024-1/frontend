@@ -86,7 +86,7 @@ const SignUpForm = () => {
                     <Art />
                 </div>
                 <div className="form">
-                    <h2>EasyComm</h2>
+                    <h2>GIMS</h2>
                     <h4>Sign Up</h4>
                     {error && <p style={{ color: 'red' }}>{error}</p>} {/* Exibe mensagem de erro */}
                     <form onSubmit={handleSubmit}>
