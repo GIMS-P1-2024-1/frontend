@@ -6,7 +6,6 @@ class GroupService {
     constructor(apiUrl) {
         this.apiUrl = apiUrl || process.env.REACT_APP_API_URL;
     }
-
     async updateGroup(originalGroupName, groupData) {
         const url = `${this.apiUrl}/groups/update`;
         try {

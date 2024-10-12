@@ -21,15 +21,12 @@ const IntegrationList = ({ integrations }) => {
                 <div
                     key={index}
                     className="integration-item"
-                    onClick={() => handleShowModal(integration)} // Abre o modal ao clicar
                 >
                     <div className="integration-content">
                         <div className="integration-info">
                             <h3>{integration.title}</h3>
-                            <p>MAIN COMMUNICATION: {integration.main_communication} {integration.type}</p>
                             <div className="status-container">
                                 <span className={`status ${integration.status}`}>STATUS: {integration.status.toUpperCase()}</span>
-                                <span className="last-updated">LAST UPDATED: {integration.last_updated}</span>
                             </div>
                         </div>
                         <div className="integration-icon">

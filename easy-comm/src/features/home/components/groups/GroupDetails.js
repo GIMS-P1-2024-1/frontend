@@ -1,25 +1,25 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import GmailIcon from '../../assets/gmail_icon.svg';
 import DiscordIcon from '../../assets/discord_icon.svg';
 import './Groups.css';
-import groupService from "./GroupService"
+import groupService from "./GroupService";
 
 
-const GroupDetails = ({selectedGroup, onSaveGroup}) => {
+const GroupDetails = ({ selectedGroup, onSaveGroup }) => {
     const [isEditing, setIsEditing] = useState(false);
-    const [groupName, setGroupName] = useState(selectedGroup.title);
+    const [groupName, setGroupName] = useState(selectedGroup.name);
     const [groupDescription, setGroupDescription] = useState(selectedGroup.description);
     const [emailIntegration, setEmailIntegration] = useState(selectedGroup.emailIntegration || 'Not Connected');
     const [discordIntegration, setDiscordIntegration] = useState(selectedGroup.discordIntegration || 'Not Connected');
     const [members, setMembers] = useState(selectedGroup.members || []);
-    const [membersToRemove, setMembersToRemove] = useState([]); // Armazena membros a serem removidos
     const [newMember, setNewMember] = useState('');
+    const [membersToRemove, setMembersToRemove] = useState([]); // Membros removidos
     const [error, setError] = useState('');
 
-    const originalGroupName = selectedGroup.title;
+    const originalGroupName = selectedGroup.name;
 
     useEffect(() => {
-        setGroupName(selectedGroup.title);
+        setGroupName(selectedGroup.name);
         setGroupDescription(selectedGroup.description);
         setEmailIntegration(selectedGroup.emailIntegration || 'Not Connected');
         setDiscordIntegration(selectedGroup.discordIntegration || 'Not Connected');
@@ -30,22 +30,37 @@ const GroupDetails = ({selectedGroup, onSaveGroup}) => {
         setIsEditing(true);
     };
 
+    useEffect(() => {
+        if (error) {
+            const timer = setTimeout(() => {
+                setError('');
+            }, 5000); // Limpa a mensagem de erro após 5 segundos
+            return () => clearTimeout(timer); // Limpa o timer ao desmontar ou quando o erro muda
+        }
+    }, [error]);
+
     const handleSaveClick = async () => {
         setIsEditing(false);
+
+        // Não permitir null ou string vazia para name e description
         const updatedGroup = {
-            name: groupName,
             original_name: originalGroupName,
+            name: groupName,
             description: groupDescription,
-            discord_integration: discordIntegration,
-            g_groups_integration: emailIntegration,
-            members: members.filter(member => member.trim() !== ''), // Membros atualizados
-            members_remove: membersToRemove, // Lista de membros a serem removidos
+            discord_integration: discordIntegration !== 'Not Connected' ? discordIntegration : null,
+            g_groups_integration: emailIntegration !== 'Not Connected' ? emailIntegration : null,
+            members: members.length > 0 ? members : null,
+            members_remove: membersToRemove.length > 0 ? membersToRemove : null,
         };
 
+        console.log("Members to send:", updatedGroup.members);
+        console.log("Members to remove:", updatedGroup.members_remove);
+
         try {
-            const response = await groupService.updateGroup(originalGroupName, updatedGroup); // Usando o nome original
+            const response = await groupService.updateGroup(originalGroupName, updatedGroup);
             if (response.success) {
                 onSaveGroup(updatedGroup);
+                window.location.reload();
             } else {
                 setError(response.message);
             }
@@ -54,27 +69,22 @@ const GroupDetails = ({selectedGroup, onSaveGroup}) => {
         }
     };
 
-    const handleMemberChange = (index, newValue) => {
-        const updatedMembers = [...members];
-        if (newValue.trim() === '') {
-            // Adiciona à lista de membros a serem removidos
-            setMembersToRemove([...membersToRemove, updatedMembers[index]]);
-            updatedMembers.splice(index, 1); // Remove o membro da lista de membros
-        } else {
-            updatedMembers[index] = newValue;
-        }
-        setMembers(updatedMembers);
-    };
-
     const handleAddMembers = () => {
         const newMembersList = newMember
             .split(',')
             .map(member => member.trim())
             .filter(member => member !== '');
+
         if (newMembersList.length > 0) {
             setMembers([...members, ...newMembersList]);
             setNewMember('');
         }
+    };
+
+    const handleRemoveMember = (memberToRemove) => {
+        // Atualiza a lista de membros a remover e remove da lista de membros
+        setMembers(members.filter(member => member !== memberToRemove));
+        setMembersToRemove([...membersToRemove, memberToRemove]);
     };
 
     return (
@@ -90,7 +100,7 @@ const GroupDetails = ({selectedGroup, onSaveGroup}) => {
                 )}
             </div>
 
-            {error && <p style={{color: 'red'}}>{error}</p>}
+            {error && <p style={{ color: 'red' }}>{error}</p>}
 
             <div className="details-content">
                 <label>Name:</label>
@@ -117,19 +127,15 @@ const GroupDetails = ({selectedGroup, onSaveGroup}) => {
                 <label>Integrations:</label>
                 <div className="integrations">
                     <div className="integration-item">
-                        <img src={GmailIcon} alt="Gmail Icon"/>
-                        {isEditing ? (
-                            <input
-                                type="text"
-                                value={emailIntegration}
-                                onChange={(e) => setEmailIntegration(e.target.value)}
-                            />
-                        ) : (
-                            <p>{emailIntegration}</p>
-                        )}
+                        <img src={GmailIcon} alt="Gmail Icon" />
+                        <input
+                            type="text"
+                            value={emailIntegration}
+                            readOnly
+                        />
                     </div>
                     <div className="integration-item">
-                        <img src={DiscordIcon} alt="Discord Icon"/>
+                        <img src={DiscordIcon} alt="Discord Icon" />
                         {isEditing ? (
                             <input
                                 type="text"
@@ -147,17 +153,26 @@ const GroupDetails = ({selectedGroup, onSaveGroup}) => {
                     {members.map((member, index) => (
                         <li key={index}>
                             {isEditing ? (
-                                <input
-                                    type="text"
-                                    value={member}
-                                    onChange={(e) => handleMemberChange(index, e.target.value)}
-                                />
+                                <div className="member-item">
+                                    <input
+                                        type="text"
+                                        value={member}
+                                        readOnly
+                                    />
+                                    <button
+                                        className="remove-member-button"
+                                        onClick={() => handleRemoveMember(member)}
+                                    >
+                                        Remover
+                                    </button>
+                                </div>
                             ) : (
                                 <span>{member}</span>
                             )}
                         </li>
                     ))}
                 </ul>
+
                 {isEditing && (
                     <div className="add-member-section">
                         <input

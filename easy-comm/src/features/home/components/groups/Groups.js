@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import GroupList from './GroupsList';
 import GroupDetails from './GroupDetails';
 import './Groups.css';
-import { fetchWithAuth } from '../../../auth/components/authService'
+import { fetchWithAuth } from '../../../auth/components/authService';
 
 
 const Groups = () => {
@@ -14,15 +14,16 @@ const Groups = () => {
             try {
                 const response = await fetchWithAuth(`${process.env.REACT_APP_API_URL}/groups`);
                 if (!response.ok) {
-                    throw new Error('API reponse was not OK.');
+                    throw new Error('API response was not OK.');
                 }
 
                 const data = await response.json();
                 console.log('API Response:', data);
 
+                // Usar 'name' em vez de 'title' para consistência com o backend
                 const transformedGroups = data.groups.map(group => ({
-                    title: group.name,
-                    description: group.description,    // TODO: add description field in backend
+                    name: group.name,  // Alterado para 'name' em vez de 'title'
+                    description: group.description,
                     emailIntegration: group.g_groups_integration || '',
                     discordIntegration: group.discord_integration || '',
                     members: group.members.map(member => member.email)
@@ -47,9 +48,10 @@ const Groups = () => {
     };
 
     const handleSaveGroup = (updatedGroup) => {
+        // Comparação feita por 'name' em vez de 'title'
         setGroups(prevGroups =>
             prevGroups.map(group =>
-                group.title === updatedGroup.title ? updatedGroup : group
+                group.name === updatedGroup.name ? updatedGroup : group
             )
         );
         setSelectedGroup(updatedGroup);
@@ -57,7 +59,7 @@ const Groups = () => {
 
     const handleAddGroup = () => {
         const newGroup = {
-            title: 'Novo Grupo',
+            name: 'Novo Grupo',
             description: 'Grupo recém-adicionado',
             emailIntegration: '',
             discordIntegration: '',
