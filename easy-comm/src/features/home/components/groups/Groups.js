@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import GroupList from './GroupsList';
 import GroupDetails from './GroupDetails';
+import AddGroupPopup from './Popup'; // Importe o popup
 import './Groups.css';
 import { fetchWithAuth } from '../../../auth/components/authService';
-
 
 const Groups = () => {
     const [groups, setGroups] = useState([]);
     const [selectedGroup, setSelectedGroup] = useState(null);
+    const [isPopupOpen, setIsPopupOpen] = useState(false); // Estado para controlar o popup
 
     useEffect(() => {
         const fetchGroups = async () => {
@@ -18,11 +19,8 @@ const Groups = () => {
                 }
 
                 const data = await response.json();
-                console.log('API Response:', data);
-
-                // Usar 'name' em vez de 'title' para consistência com o backend
                 const transformedGroups = data.groups.map(group => ({
-                    name: group.name,  // Alterado para 'name' em vez de 'title'
+                    name: group.name,
                     description: group.description,
                     emailIntegration: group.g_groups_integration || '',
                     discordIntegration: group.discord_integration || '',
@@ -34,7 +32,6 @@ const Groups = () => {
                 if (transformedGroups.length > 0) {
                     setSelectedGroup(transformedGroups[0]);
                 }
-
             } catch (error) {
                 console.error('Error fetching groups:', error);
             }
@@ -48,7 +45,6 @@ const Groups = () => {
     };
 
     const handleSaveGroup = (updatedGroup) => {
-        // Comparação feita por 'name' em vez de 'title'
         setGroups(prevGroups =>
             prevGroups.map(group =>
                 group.name === updatedGroup.name ? updatedGroup : group
@@ -57,16 +53,31 @@ const Groups = () => {
         setSelectedGroup(updatedGroup);
     };
 
-    const handleAddGroup = () => {
-        const newGroup = {
-            name: 'Novo Grupo',
-            description: 'Grupo recém-adicionado',
-            emailIntegration: '',
-            discordIntegration: '',
-            members: []
-        };
-        setGroups([...groups, newGroup]);
-        setSelectedGroup(newGroup);
+    const handleAddGroupClick = () => {
+        setIsPopupOpen(true); // Abre o popup ao clicar em "+"
+    };
+
+    const handleAddGroup = async (newGroup) => {
+        try {
+            const response = await fetchWithAuth(`${process.env.REACT_APP_API_URL}/groups`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newGroup),
+            });
+
+            if (!response.ok) {
+                throw new Error('Erro ao adicionar o grupo.');
+            }
+
+            const addedGroup = await response.json();
+            setGroups([...groups, addedGroup]);
+            setSelectedGroup(addedGroup);
+            window.location.reload();
+        } catch (error) {
+            console.error('Erro ao adicionar o grupo:', error);
+        }
     };
 
     return (
@@ -77,7 +88,7 @@ const Groups = () => {
                         groups={groups}
                         selectedGroup={selectedGroup}
                         handleGroupClick={handleGroupClick}
-                        handleAddGroup={handleAddGroup}
+                        handleAddGroup={handleAddGroupClick} // Abre o popup ao adicionar grupo
                     />
                     {selectedGroup && (
                         <GroupDetails
@@ -88,6 +99,13 @@ const Groups = () => {
                 </div>
             ) : (
                 <p>Loading groups...</p>
+            )}
+
+            {isPopupOpen && (
+                <AddGroupPopup
+                    onClose={() => setIsPopupOpen(false)}
+                    onAddGroup={handleAddGroup} // Função chamada ao adicionar grupo
+                />
             )}
         </div>
     );
