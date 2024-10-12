@@ -6,11 +6,13 @@ import Discord from '../../assets/discord_icon.svg'
 const GroupList = ({ groups, selectedGroup, handleGroupClick, handleAddGroup }) => {  // Altere handleAddClick para handleAddGroup
     return (
         <div className="group-list">
-            <div className="group-header">
+            <div className="main-header">
                 <h2>Existing Groups</h2>
-                <button className="add-group-button" onClick={handleAddGroup}>+</button> {/* Aqui, também chamamos handleAddGroup */}
+                <button className="main-button" onClick={handleAddGroup}>
+                    <i className="material-icons">add</i>
+                </button> {/* Aqui, também chamamos handleAddGroup */}
             </div>
-            <ul>
+            <ul className="group-list-items">
                 {groups.map((group, index) => (
                     <li
                         key={index}
