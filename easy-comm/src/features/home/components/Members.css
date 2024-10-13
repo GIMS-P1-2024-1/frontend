@@ -1,0 +1,39 @@
+/* Members.css */
+
+.members-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff; /* Fundo claro para a tela */
+    border-radius: 15px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.members-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.member-card {
+    background-color: #D7E6F9; /* Azul claro */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.member-card h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.member-card p {
+    margin: 5px 0;
+    color: #333;
+    font-size: 14px;
+}

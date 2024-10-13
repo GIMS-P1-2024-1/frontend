@@ -34,7 +34,7 @@ const SignInForm = () => {
                     <Art />
                 </div>
                 <div className="form">
-                    <h2>EasyComm</h2>
+                    <h2>GIMS</h2>
                     <h4>Sign In</h4>
                     <p>or <Link to="/signup">create an account</Link></p>
                     {error && <p style={{ color: 'red' }}>{error}</p>}

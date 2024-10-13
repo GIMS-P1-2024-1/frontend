@@ -205,6 +205,11 @@
     gap: 10px;
 }
 
+.integration-item input[readonly] {
+    background-color: #E8F1FA; /* Mesmo fundo azul claro para campos readOnly */
+    color: #333; /* Define a cor do texto */
+}
+
 
 .members-list {
     display: flex;
