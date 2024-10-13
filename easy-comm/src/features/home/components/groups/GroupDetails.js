@@ -140,6 +140,7 @@ const GroupDetails = ({ selectedGroup, onSaveGroup }) => {
                             <input
                                 type="text"
                                 value={discordIntegration}
+                                readOnly
                                 onChange={(e) => setDiscordIntegration(e.target.value)}
                             />
                         ) : (
