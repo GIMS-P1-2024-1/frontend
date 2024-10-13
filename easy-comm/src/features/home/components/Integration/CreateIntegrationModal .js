@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './CreateIntegrationModal.css';
-import {fetchWithAuth} from "../../../auth/components/authService";
+import { fetchWithAuth } from "../../../auth/components/authService";
 
 const CreateIntegrationModal = ({ handleClose, handleCreateIntegration }) => {
     const [groupName, setGroupName] = useState('');
@@ -59,8 +59,10 @@ const CreateIntegrationModal = ({ handleClose, handleCreateIntegration }) => {
             }));
 
             results.forEach(data => handleCreateIntegration(data));
-            handleClose();
         } catch (error) {
+        } finally {
+            handleClose();
+            window.location.reload();
         }
     };
 
