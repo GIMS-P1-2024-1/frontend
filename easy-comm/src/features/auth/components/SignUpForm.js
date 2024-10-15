@@ -26,11 +26,6 @@ const SignUpForm = () => {
         e.preventDefault();
         setError('');
 
-        if (!validateEmail(email)) {
-            setError('O email deve pertencer a um dos domínios permitidos: copin.ufcg.edu.br, ccc.ufcg.edu.br, estudante.ufcg.edu.br, computacao.ufcg.edu.br.');
-            return;
-        }
-
         if (!validateUsername(username)) {
             setError('Nome de usuário deve ter no mínimo 3 caracteres e não pode conter espaços.');
             return;
@@ -86,9 +81,9 @@ const SignUpForm = () => {
                     <Art />
                 </div>
                 <div className="form">
-                    <h2>EasyComm</h2>
+                    <h2>GIMS</h2>
                     <h4>Sign Up</h4>
-                    {error && <p style={{ color: 'red' }}>{error}</p>} {/* Exibe mensagem de erro */}
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
                     <form onSubmit={handleSubmit}>
                         <div className="input-group">
                             <i className="material-icons">email</i>

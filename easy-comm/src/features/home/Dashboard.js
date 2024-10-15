@@ -7,7 +7,7 @@ const Dashboard = () => {
         <header>
             <nav className="nav-bar">
                 <div className="logo">
-                    <h1>GIMS</h1>
+                    <h1>G<span className="logo-i">I</span>MS</h1>
                 </div>
                 <div className="nav-list">
                     <ul>

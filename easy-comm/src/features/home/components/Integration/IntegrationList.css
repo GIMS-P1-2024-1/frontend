@@ -3,11 +3,48 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 100%;  /* Adiciona largura total para o container da lista */
+    width: 100%;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.integration-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.integration-list-header h2 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.add-integration-button {
+    background-color: #0a6491;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-integration-button:hover {
+    background-color: #0056b3;
 }
 
 .integration-item {

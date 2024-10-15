@@ -21,14 +21,14 @@ const fetchWithAuth = (url, options = {}) => {
     return fetch(url, { ...options, headers });
 };
 
-const login = async (email, password) => {
+const login = async (username, password) => {
     const url = `${process.env.REACT_APP_API_URL}/token`;
     const clientId = process.env.REACT_APP_CLIENT_ID;
     const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
 
     const formData = new URLSearchParams();
     formData.append('grant_type', 'password');
-    formData.append('username', email);
+    formData.append('username', username);
     formData.append('password', password);
     formData.append('scope', '');
     formData.append('client_id', clientId || '');
