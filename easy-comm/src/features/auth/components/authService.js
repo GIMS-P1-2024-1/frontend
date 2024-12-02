@@ -45,7 +45,7 @@ const login = async (username, password) => {
 
         if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(errorData.message || 'Erro ao fazer login');
+            throw new Error(errorData.detail || 'Erro ao fazer login');
         }
 
         const data = await response.json();
