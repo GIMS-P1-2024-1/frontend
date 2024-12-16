@@ -4,7 +4,7 @@ import Dashboard from './Dashboard';
 import './Home.css';
 import Groups from "./components/groups/Groups";
 import Integrations from "./components/Integration/Integration";
-import Members from "./components/Members";
+import Members from "./components/members/Members";
 import Settings from "./components/Settings";
 
 const Home = () => {

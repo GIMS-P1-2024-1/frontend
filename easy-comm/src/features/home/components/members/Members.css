@@ -1,0 +1,111 @@
+.members-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff; /* Fundo claro para a tela */
+    border-radius: 10px; /* Consistente com a UI das integrações */
+    position: relative; /* Necessário para posicionar o botão "+" */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra mais sutil e consistente */
+}
+
+.members-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.members-header h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.add-member-btn {
+    background-color: #0a6491; /* Azul padrão */
+    color: white;
+    border: none;
+    border-radius: 5px; /* Botão quadrado com bordas leves */
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-member-btn:hover {
+    background-color: #0056b3; /* Azul mais escuro no hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Efeito de sombra mais intenso */
+}
+
+.members-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.member-card {
+    background-color: #E8F1FA; /* Azul mais claro */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.member-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.member-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+}
